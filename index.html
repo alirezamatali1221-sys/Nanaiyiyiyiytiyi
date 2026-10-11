@@ -1,1 +1,558 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عقدنامه ابول و سلی 💍</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+
+:root {
+  --gold: #c49b52;
+  --darkgold: #87632d;
+  --cream: #fffaf0;
+  --ink: #493824;
+  --pink: #c96f86;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at top, #fff8e9, transparent 65%),
+    linear-gradient(135deg, #f2e5cd, #fffaf2, #ead8b6);
+  overflow-x: hidden;
+}
+
+button { font-family: inherit; cursor: pointer; }
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 14px;
+}
+
+.hidden { display: none !important; }
+
+.card {
+  width: min(100%, 570px);
+  position: relative;
+  text-align: center;
+  padding: 32px 22px;
+  border: 1px solid #d5b879;
+  border-radius: 25px;
+  background: rgba(255, 252, 244, .96);
+  box-shadow: 0 15px 50px #77582a20, inset 0 0 0 5px #c49b5212;
+}
+
+.card:before {
+  content: "✦";
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  color: var(--gold);
+  font-size: 25px;
+}
+
+.card:after {
+  content: "✦";
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  color: var(--gold);
+  font-size: 25px;
+}
+
+.ornament {
+  color: var(--gold);
+  font-size: 24px;
+  letter-spacing: 8px;
+}
+
+h1 {
+  color: var(--darkgold);
+  font-size: clamp(25px, 7vw, 36px);
+  margin: 12px 0;
+}
+
+p { line-height: 2; }
+
+.small {
+  font-size: 13px;
+  color: #8b775b;
+}
+
+.btn {
+  border: 0;
+  border-radius: 14px;
+  padding: 13px 28px;
+  font-size: 17px;
+  font-weight: 900;
+  box-shadow: 0 5px 15px #65451b20;
+}
+
+.yes {
+  color: white;
+  background: linear-gradient(135deg, #d8b66e, #a77a35);
+  position: relative;
+  z-index: 5;
+  transition: all .35s ease;
+}
+
+.no {
+  color: #8c4e5b;
+  background: #f8e4e8;
+  border: 1px solid #e7bfc8;
+  position: relative;
+  z-index: 8;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+  min-height: 62px;
+  position: relative;
+}
+
+#message {
+  color: #b24c68;
+  font-weight: 700;
+  min-height: 34px;
+  margin: 15px 0 0;
+}
+
+#proposal .yes.expanding {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  border-radius: 20px;
+  max-width: none;
+}
+
+#proposal .no.covered {
+  position: fixed;
+  z-index: 10;
+  top: 12px;
+  left: 12px;
+}
+
+/* عقدنامه */
+.certificate {
+  border: 2px double var(--gold);
+  padding: 23px 15px;
+  border-radius: 15px;
+  background:
+    linear-gradient(#fffdf7e8, #fffdf7e8),
+    repeating-linear-gradient(45deg, #d3b16a 0 1px, transparent 1px 8px);
+}
+
+.seal {
+  width: 78px;
+  height: 78px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 37px;
+  margin: 0 auto 15px;
+  color: var(--darkgold);
+  box-shadow: inset 0 0 0 5px #c49b521c;
+}
+
+.contract-title {
+  font-size: 27px;
+  color: var(--darkgold);
+  margin: 8px 0;
+}
+
+.names {
+  color: #9b7138;
+  font-size: 25px;
+  font-weight: 900;
+  margin: 10px 0;
+}
+
+.clauses {
+  text-align: right;
+  line-height: 2.1;
+  padding-right: 22px;
+  font-size: 14px;
+}
+
+.fingers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.finger-box {
+  min-width: 0;
+  border: 1px dashed #b89759;
+  border-radius: 15px;
+  padding: 15px 8px;
+  background: #fff9ec;
+  color: var(--ink);
+  transition: .3s;
+}
+
+.finger-box.stamped {
+  border: 1px solid #a98445;
+  background: #f7edda;
+}
+
+.finger-icon {
+  font-size: 38px;
+  display: block;
+  margin-bottom: 8px;
+  color: #b99759;
+}
+
+.fingerprint {
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 8px;
+  color: #9c7336;
+}
+
+.status {
+  font-size: 12px;
+  color: #8b775b;
+}
+
+.final-btn {
+  width: 100%;
+  margin-top: 22px;
+  color: white;
+  background: linear-gradient(135deg, #c9a35c, #8d652c);
+}
+
+.final-btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+#celebration {
+  overflow: hidden;
+  position: relative;
+}
+
+.celebrate-title {
+  font-size: clamp(32px, 8vw, 47px);
+  color: #a97d39;
+}
+
+.couple {
+  font-size: 26px;
+  font-weight: 900;
+  color: #b45c79;
+}
+
+.floating-heart {
+  position: fixed;
+  bottom: -50px;
+  z-index: 50;
+  pointer-events: none;
+  animation: floatUp 5s linear forwards;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0) rotate(0); opacity: 1; }
+  to { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
+}
+
+@media(max-width:380px) {
+  .card { padding: 28px 14px; }
+  .btn { padding: 12px 20px; }
+  .clauses { font-size: 13px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- صفحه پیشنهاد -->
+<section class="page" id="proposal">
+  <div class="card">
+    <div class="ornament">✦ ♡ ✦</div>
+    <div style="font-size:46px;margin-top:12px">💍</div>
+    <h1>یه سؤال مهم ازت دارم</h1>
+
+    <p style="font-size:18px">
+      سلام عزیزم، من ابول هستم ❤️<br>
+      و یه سؤال دارم ازت، قربونت بشم...
+    </p>
+
+    <p style="font-size:25px;font-weight:900;color:#a77a35">
+      آیا با من ازدواج می‌کنی؟ 🥹
+    </p>
+
+    <p class="small">با دقت جواب بده خانومم 🤭</p>
+
+    <div class="buttons">
+      <button class="btn yes" id="yesBtn" onclick="sayYes()">آره 💍</button>
+      <button class="btn no" id="noBtn" onclick="sayNo()">نه 🙄</button>
+    </div>
+
+    <p id="message" aria-live="polite"></p>
+    <p class="small" id="hint">منتظر جواب قشنگتم ❤️</p>
+  </div>
+</section>
+
+<!-- عقدنامه -->
+<section class="page hidden" id="contract">
+  <div class="card">
+    <div class="certificate">
+      <div class="seal">💍</div>
+      <div class="ornament">✦ سند عشق ✦</div>
+      <h2 class="contract-title">عقدنامهٔ رسمی عشق</h2>
+      <p class="small">سند شمارهٔ ۰۰۱ • صادره از قلب ابول</p>
+
+      <div class="names">ابول <span style="color:#c49b52">♡</span> سلی</div>
+
+      <p>
+        این سند با رضایت قلبی دو طرف، به پاس عشق،
+        رفاقت و انتخاب دوبارهٔ یکدیگر تنظیم شده است.
+      </p>
+
+      <div class="clauses">
+        <div>♡ مادهٔ اول: هوای دل یکدیگر را داشته باشیم.</div>
+        <div>♡ مادهٔ دوم: موقع ناراحتی، به‌جای حدس زدن حرف بزنیم.</div>
+        <div>♡ مادهٔ سوم: احترام و اعتماد، پایهٔ رابطه‌مان باشد.</div>
+        <div>♡ مادهٔ چهارم: در روزهای سخت، کنار هم بمانیم و کمک بخواهیم.</div>
+        <div>♡ مادهٔ پنجم: خنده‌ها، خاطره‌ها و محبت را فراموش نکنیم.</div>
+      </div>
+
+      <p style="font-weight:900;color:#9b7138">
+        امضای عاشقانهٔ دو طرف
+      </p>
+
+      <div class="fingers">
+        <button class="finger-box stamped" id="fingerAbol" onclick="stampFinger('abol')">
+          <svg class="fingerprint" viewBox="0 0 100 100" aria-label="اثر انگشت ثبت شده">
+            <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round">
+              <path d="M29 47 C29 19 70 14 76 43"/>
+              <path d="M21 49 C20 12 78 4 84 42"/>
+              <path d="M36 49 C35 31 62 27 68 45"/>
+              <path d="M43 50 C43 41 56 39 60 48"/>
+              <path d="M18 58 C18 36 27 24 40 19"/>
+              <path d="M81 54 C82 37 75 25 66 20"/>
+              <path d="M27 60 C27 43 35 35 44 34"/>
+              <path d="M73 60 C73 45 66 35 57 34"/>
+              <path d="M36 61 C36 50 41 45 49 45 C60 45 64 53 63 65"/>
+              <path d="M45 58 C45 54 53 53 54 60 C57 74 52 85 48 91"/>
+              <path d="M34 70 C32 79 29 85 26 90"/>
+              <path d="M67 70 C67 79 71 85 74 89"/>
+            </g>
+          </svg>
+          <strong>ابول</strong>
+          <span class="status" id="abolStatus">اثر انگشت ثبت شده ✓</span>
+        </button>
+
+        <button class="finger-box" id="fingerSeli" onclick="stampFinger('seli')">
+          <span class="finger-icon" id="seliIcon">☝️</span>
+          <strong>سلی</strong>
+          <span class="status" id="seliStatus">برای ثبت لمس کن</span>
+        </button>
+      </div>
+
+      <p class="small" id="fingerMessage">اثر انگشت ابول از قبل ثبت شده است ❤️</p>
+
+      <button class="btn final-btn" id="finalBtn" onclick="celebrate()" disabled>
+        اعلام مراسم 💐
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- جشن -->
+<section class="page hidden" id="celebration">
+  <div class="card">
+    <div style="font-size:70px">💍💐</div>
+    <h1 class="celebrate-title">مبارکهههههه 😭❤️</h1>
+    <p class="couple">ابول و سلیییی 🤭💍</p>
+    <p>
+      از امروز یه خاطرهٔ قشنگ دیگه هم داریم.<br>
+      به سلامتی عشق، رفاقت و تمام روزهای خوبی که آرزو داریم کنار هم بسازیم. ❤️
+    </p>
+    <div style="font-size:35px">💗 💖 💕 💞</div>
+    <button class="btn yes" onclick="restart()" style="margin-top:20px">
+      از اول ببینیم؟ 🔁
+    </button>
+  </div>
+</section>
+
+<script>
+let noCount = 0;
+let stamped = { abol: true, seli: false };
+let heartTimer = null;
+
+const $ = id => document.getElementById(id);
+
+function sayNo() {
+  noCount++;
+
+  const messages = [
+    "بی تربیت الکی نگو",
+    "شوخی نکنااا میزنمتا",
+    "جدی میگی؟😭💔"
+  ];
+
+  $("message").textContent =
+    noCount <= 3 ? messages[noCount - 1] : "مگه دست خودته خانوم🤭🤨";
+
+  $("hint").textContent = noCount >= 4
+    ? "خانومممم فقط آره رو بزن 😭❤️"
+    : "یه بار دیگه فکر کننن 🤭";
+
+  const yes = $("yesBtn");
+  const no = $("noBtn");
+
+  yes.classList.add("expanding");
+
+  const width = Math.min(110, 38 + noCount * 13);
+  const height = Math.min(110, 13 + noCount * 13);
+
+  yes.style.width = width + "vw";
+  yes.style.height = height + "vh";
+  yes.style.fontSize = Math.min(58, 18 + noCount * 5) + "px";
+  yes.style.padding = "12px";
+  yes.style.borderRadius = noCount >= 5 ? "0" : "20px";
+
+  // دکمه نه از نظر ظاهری زیر آره می‌رود.
+  // ناحیه لمس آن در گوشه بالا باقی می‌ماند تا بتوان دوباره زد.
+  no.classList.add("covered");
+  no.style.opacity = noCount >= 4 ? "0" : "1";
+  no.style.background = noCount >= 4 ? "transparent" : "#f8e4e8";
+  no.style.borderColor = noCount >= 4 ? "transparent" : "#e7bfc8";
+  no.style.color = noCount >= 4 ? "transparent" : "#8c4e5b";
+  no.style.width = noCount >= 4 ? "90px" : "auto";
+  no.style.height = noCount >= 4 ? "55px" : "auto";
+}
+
+function sayYes() {
+  $("proposal").classList.add("hidden");
+  $("contract").classList.remove("hidden");
+  window.scrollTo(0, 0);
+  updateFingerStatus();
+}
+
+function stampFinger(person) {
+  if (person === "abol") {
+    stamped.abol = true;
+    $("fingerMessage").textContent = "اثر انگشت ابول از قبل ثبت شده بود ❤️";
+  }
+
+  if (person === "seli") {
+    stamped.seli = true;
+    $("fingerSeli").classList.add("stamped");
+    $("seliIcon").innerHTML = `
+      <svg class="fingerprint" viewBox="0 0 100 100" aria-label="اثر انگشت ثبت شده">
+        <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round">
+          <path d="M29 47 C29 19 70 14 76 43"/>
+          <path d="M21 49 C20 12 78 4 84 42"/>
+          <path d="M36 49 C35 31 62 27 68 45"/>
+          <path d="M43 50 C43 41 56 39 60 48"/>
+          <path d="M18 58 C18 36 27 24 40 19"/>
+          <path d="M81 54 C82 37 75 25 66 20"/>
+          <path d="M27 60 C27 43 35 35 44 34"/>
+          <path d="M73 60 C73 45 66 35 57 34"/>
+          <path d="M36 61 C36 50 41 45 49 45 C60 45 64 53 63 65"/>
+          <path d="M45 58 C45 54 53 53 54 60 C57 74 52 85 48 91"/>
+          <path d="M34 70 C32 79 29 85 26 90"/>
+          <path d="M67 70 C67 79 71 85 74 89"/>
+        </g>
+      </svg>`;
+    $("fingerMessage").textContent = "اثر انگشت سلی هم ثبت شد! حالا وقت جشنه 😭❤️";
+  }
+
+  updateFingerStatus();
+}
+
+function updateFingerStatus() {
+  $("abolStatus").textContent = stamped.abol
+    ? "اثر انگشت ثبت شده ✓"
+    : "برای ثبت لمس کن";
+
+  $("fingerAbol").classList.toggle("stamped", stamped.abol);
+
+  $("seliStatus").textContent = stamped.seli
+    ? "اثر انگشت ثبت شد ✓"
+    : "برای ثبت لمس کن";
+
+  $("fingerSeli").classList.toggle("stamped", stamped.seli);
+  $("finalBtn").disabled = !(stamped.abol && stamped.seli);
+}
+
+function celebrate() {
+  if (!stamped.abol || !stamped.seli) return;
+
+  $("contract").classList.add("hidden");
+  $("celebration").classList.remove("hidden");
+  window.scrollTo(0, 0);
+
+  if (heartTimer) clearInterval(heartTimer);
+  heartTimer = setInterval(makeHeart, 300);
+
+  setTimeout(() => {
+    if (heartTimer) clearInterval(heartTimer);
+    heartTimer = null;
+  }, 15000);
+}
+
+function makeHeart() {
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+  heart.textContent = ["❤️", "💗", "💖", "💕", "💍", "✨"][
+    Math.floor(Math.random() * 6)
+  ];
+  heart.style.left = Math.random() * 95 + "vw";
+  heart.style.fontSize = (20 + Math.random() * 25) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5200);
+}
+
+function restart() {
+  if (heartTimer) clearInterval(heartTimer);
+  heartTimer = null;
+
+  $("celebration").classList.add("hidden");
+  $("contract").classList.add("hidden");
+  $("proposal").classList.remove("hidden");
+
+  noCount = 0;
+  stamped = { abol: true, seli: false };
+
+  $("yesBtn").className = "btn yes";
+  $("yesBtn").removeAttribute("style");
+  $("noBtn").className = "btn no";
+  $("noBtn").removeAttribute("style");
+  $("message").textContent = "";
+  $("hint").textContent = "منتظر جواب قشنگتم ❤️";
+
+  $("fingerSeli").classList.remove("stamped");
+  $("seliIcon").textContent = "☝️";
+  $("fingerMessage").textContent = "اثر انگشت ابول از قبل ثبت شده است ❤️";
+
+  updateFingerStatus();
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+  </html>
+  
